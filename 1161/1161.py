@@ -1,3 +1,4 @@
+# 1161. Maximum Level Sum of a Binary Tree -------------------------
 from collections import deque
 
 class Solution(object):
@@ -12,18 +13,19 @@ class Solution(object):
         max_sum = float('-inf')  #最大和 #負無限大是因為可能有負數
         max_level = 1  #最大和的層數
         
-        #開始BFS
+        #開始BFS #當隊列不是空的,就繼續處理
         while queue: 
             
             layer_sum = 0 #每一層的和
             layer_nodes = len(queue) #每一層的節點數量
 
             for i in range(layer_nodes): #處理每一層的節點
-                node = queue.popleft()
-                # print(node)
-                layer_sum =  layer_sum + node.val
+                node = queue.popleft() #移除第一個節點並取得回傳數值
 
-                if node.left:
+                layer_sum =  layer_sum + node.val #計算每一層的和
+
+                #加入下一層的節點
+                if node.left: 
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
